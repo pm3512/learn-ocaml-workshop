@@ -42,7 +42,7 @@ let four = 4
 
    Now, try inserting an incorrect signature for [float_four] in the mli to see
    what error the compiler gives you. *)
-let float_four = 4.
+let float_four: float = 4.
 
 (* In OCaml, floats are distinguished from ints by the presence of a decimal
    point. [0] is an int, [0.] is a float.
@@ -70,11 +70,11 @@ let float_four = 4.
    value of the last statement in that function.
 
    Try implementing [int_average].  *)
-let int_average x y = failwith "For you to implement"
+let int_average x y = (x + y) / 2
 
 (* Now try implementing [float_average]. Remember that you can check the mli for
    the type of this function. *)
-let float_average x y = failwith "For you to implement"
+let float_average x y = (x +. y) /. 2.
 
 (* Note that in OCaml, parenthese are not necessary when applying a function! So
    the following expression computes the average of 10 and 20:
@@ -161,8 +161,7 @@ let () =
    In words: [equal] takes two [int]s and returns a [bool]. The following line
    is applying that function to two inputs, [5] and [int_average 5 5]. *)
 
-let%test "Testing int_average..." =
-  Int.equal (int_average 5 5) 5
+let%test "Testing int_average..." = Int.equal (int_average 5 5) 5
 
 (* Modules can also contain operators. By convention, the equality operator is
    defined and equivalent to the [equal] function. To reference an operator in a
